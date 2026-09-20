@@ -54,7 +54,7 @@ start playing.
    browser play, game-record auditing, deeper self-play, paired-opening model
    leagues, and guarded champion promotion.
 
-## Current model: Tic-Tac-Toe Sophon v1.0
+## Current model: Sophon v1.0
 
 The compact champion model is stored at `checkpoints/best.pth`; the named
 release is at `checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth`.
@@ -285,18 +285,3 @@ without a rules error. The heuristic baseline scored 499 wins, 0 losses, and
 `.gitignore` excludes private records, logs, full training artifacts, caches,
 and downloaded third-party binaries. These files may remain on the development
 machine without being included by `git add .`.
-
-## GitHub publication
-
-Before publishing, review ignored files with `git status --short --ignored`.
-Then commit and push:
-
-```bash
-git add .
-git commit -m "Initial public release"
-git remote add origin https://github.com/<username>/<repository>.git
-git push -u origin main
-```
-
-No open-source license is selected yet. Add a `LICENSE` file before publication
-if you intend to grant reuse, modification, or redistribution rights.
