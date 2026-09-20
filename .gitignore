@@ -1,0 +1,42 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+.env
+.env.*
+
+# Test and tooling caches
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Runtime output and private/local game records
+/logs/
+/records/
+
+# Downloaded third-party executables and tunnel state
+/tools/*
+!/tools/README.md
+
+# Generated training artifacts. Keep only the lightweight public release.
+/checkpoints/**
+!/checkpoints/best.pth
+!/checkpoints/releases/
+!/checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth
+!/checkpoints/releases/pre_v1_champion.pth
+!/checkpoints/releases/v1.0_release_report.json
+/checkpoints_smoke/
+
+# Temporary model exports
+*.tmp
+*.onnx

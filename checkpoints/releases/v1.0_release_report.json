@@ -1,0 +1,2670 @@
+{
+  "candidate": {
+    "path": "checkpoints\\candidate_v1\\trained.pth",
+    "iteration": 45,
+    "parameters": 104934
+  },
+  "champion": {
+    "path": "checkpoints\\releases\\pre_v1_champion.pth",
+    "iteration": 25,
+    "parameters": 104934
+  },
+  "match": {
+    "games": 200,
+    "wins": 98,
+    "losses": 35,
+    "draws": 67,
+    "score_rate": 0.6575,
+    "opening_pairs": 100,
+    "opening_plies": 4,
+    "score_rate_ci95": [
+      0.605,
+      0.7075
+    ],
+    "ci_method": "paired_percentile_bootstrap_by_opening",
+    "bootstrap_samples": 10000,
+    "candidate_as_p1": {
+      "games": 100,
+      "wins": 57,
+      "losses": 17,
+      "draws": 26,
+      "score_rate": 0.7
+    },
+    "candidate_as_p2": {
+      "games": 100,
+      "wins": 41,
+      "losses": 18,
+      "draws": 41,
+      "score_rate": 0.615
+    },
+    "average_small_board_margin": 0.545,
+    "average_moves": 56.8,
+    "protocol": {
+      "simulations_per_move_each": 96,
+      "c_puct_each": 1.5,
+      "dirichlet_noise": false,
+      "temperature": 0.0,
+      "swap_sides_for_every_opening": true,
+      "seed": 20260916
+    },
+    "pairs": [
+      {
+        "opening_index": 0,
+        "opening_seed": 2839523462,
+        "opening_moves": [
+          58,
+          22,
+          77,
+          70
+        ],
+        "game_seed": 609231095,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 62
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 1,
+        "opening_seed": 636530911,
+        "opening_moves": [
+          61,
+          5,
+          25,
+          76
+        ],
+        "game_seed": 2125131320,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 47
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 45
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 2,
+        "opening_seed": 3104234935,
+        "opening_moves": [
+          64,
+          39,
+          46,
+          76
+        ],
+        "game_seed": 1235071981,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 3,
+        "opening_seed": 1425884343,
+        "opening_moves": [
+          33,
+          11,
+          34,
+          13
+        ],
+        "game_seed": 1153392,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 61
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 67
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 4,
+        "opening_seed": 1412014747,
+        "opening_moves": [
+          43,
+          41,
+          44,
+          34
+        ],
+        "game_seed": 1305720235,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 55
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 5,
+        "opening_seed": 2158881562,
+        "opening_moves": [
+          47,
+          60,
+          9,
+          28
+        ],
+        "game_seed": 3934944368,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 6,
+        "opening_seed": 2637663526,
+        "opening_moves": [
+          12,
+          45,
+          56,
+          6
+        ],
+        "game_seed": 1128704546,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 6,
+          "moves": 65
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 7,
+        "opening_seed": 1406471740,
+        "opening_moves": [
+          28,
+          3,
+          0,
+          9
+        ],
+        "game_seed": 229739281,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 67
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 8,
+        "opening_seed": 1589088769,
+        "opening_moves": [
+          7,
+          13,
+          39,
+          38
+        ],
+        "game_seed": 2773959190,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 2,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 45
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 9,
+        "opening_seed": 724663735,
+        "opening_moves": [
+          60,
+          10,
+          31,
+          22
+        ],
+        "game_seed": 3407836591,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 10,
+        "opening_seed": 1765428950,
+        "opening_moves": [
+          46,
+          59,
+          15,
+          27
+        ],
+        "game_seed": 3972471037,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 55
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 53
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 11,
+        "opening_seed": 2861406362,
+        "opening_moves": [
+          46,
+          75,
+          55,
+          14
+        ],
+        "game_seed": 1916281921,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 60
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 12,
+        "opening_seed": 731319700,
+        "opening_moves": [
+          58,
+          23,
+          61,
+          12
+        ],
+        "game_seed": 2375458946,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 66
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 55
+        },
+        "pair_score": 0.0
+      },
+      {
+        "opening_index": 13,
+        "opening_seed": 728256137,
+        "opening_moves": [
+          58,
+          5,
+          8,
+          15
+        ],
+        "game_seed": 1561403822,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 54
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 61
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 14,
+        "opening_seed": 3111741608,
+        "opening_moves": [
+          40,
+          41,
+          33,
+          0
+        ],
+        "game_seed": 3720770257,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 42
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 15,
+        "opening_seed": 2085974681,
+        "opening_moves": [
+          55,
+          13,
+          50,
+          71
+        ],
+        "game_seed": 459900853,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 49
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 62
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 16,
+        "opening_seed": 3336541533,
+        "opening_moves": [
+          44,
+          35,
+          26,
+          60
+        ],
+        "game_seed": 3708827030,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 51
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 17,
+        "opening_seed": 2227637347,
+        "opening_moves": [
+          1,
+          4,
+          14,
+          42
+        ],
+        "game_seed": 929305927,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 18,
+        "opening_seed": 160251520,
+        "opening_moves": [
+          70,
+          48,
+          65,
+          34
+        ],
+        "game_seed": 715273515,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 50
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 54
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 19,
+        "opening_seed": 2936822282,
+        "opening_moves": [
+          27,
+          10,
+          49,
+          58
+        ],
+        "game_seed": 2949732007,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 53
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 63
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 20,
+        "opening_seed": 3700233380,
+        "opening_moves": [
+          43,
+          41,
+          42,
+          45
+        ],
+        "game_seed": 3014936962,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 52
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 21,
+        "opening_seed": 784511250,
+        "opening_moves": [
+          31,
+          4,
+          5,
+          16
+        ],
+        "game_seed": 2436519891,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 22,
+        "opening_seed": 104128227,
+        "opening_moves": [
+          24,
+          72,
+          54,
+          20
+        ],
+        "game_seed": 402057430,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 49
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 47
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 23,
+        "opening_seed": 2533861190,
+        "opening_moves": [
+          38,
+          53,
+          78,
+          73
+        ],
+        "game_seed": 845769016,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 24,
+        "opening_seed": 188362912,
+        "opening_moves": [
+          42,
+          37,
+          40,
+          32
+        ],
+        "game_seed": 4194503119,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 45
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 52
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 25,
+        "opening_seed": 3963273872,
+        "opening_moves": [
+          30,
+          0,
+          20,
+          70
+        ],
+        "game_seed": 390420277,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 56
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 26,
+        "opening_seed": 895717341,
+        "opening_moves": [
+          43,
+          31,
+          3,
+          11
+        ],
+        "game_seed": 1648581761,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 6,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 47
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 27,
+        "opening_seed": 2809729839,
+        "opening_moves": [
+          11,
+          42,
+          36,
+          38
+        ],
+        "game_seed": 685314088,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 54
+        },
+        "pair_score": 0.0
+      },
+      {
+        "opening_index": 28,
+        "opening_seed": 1355960109,
+        "opening_moves": [
+          38,
+          44,
+          42,
+          47
+        ],
+        "game_seed": 990191060,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 59
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 57
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 29,
+        "opening_seed": 957836926,
+        "opening_moves": [
+          9,
+          45,
+          72,
+          54
+        ],
+        "game_seed": 687619649,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 48
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 58
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 30,
+        "opening_seed": 3817550906,
+        "opening_moves": [
+          57,
+          10,
+          39,
+          45
+        ],
+        "game_seed": 2140522525,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 53
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 68
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 31,
+        "opening_seed": 2327466814,
+        "opening_moves": [
+          33,
+          18,
+          64,
+          40
+        ],
+        "game_seed": 777347726,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 46
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 32,
+        "opening_seed": 3527132521,
+        "opening_moves": [
+          70,
+          50,
+          69,
+          37
+        ],
+        "game_seed": 2235749096,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 59
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 6,
+          "p2_score": 3,
+          "moves": 59
+        },
+        "pair_score": 0.0
+      },
+      {
+        "opening_index": 33,
+        "opening_seed": 964312048,
+        "opening_moves": [
+          14,
+          53,
+          71,
+          52
+        ],
+        "game_seed": 3190696502,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 46
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 6,
+          "moves": 60
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 34,
+        "opening_seed": 200064145,
+        "opening_moves": [
+          50,
+          71,
+          33,
+          19
+        ],
+        "game_seed": 1198995456,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 59
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 35,
+        "opening_seed": 2824371664,
+        "opening_moves": [
+          73,
+          59,
+          24,
+          55
+        ],
+        "game_seed": 3900456207,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 52
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 46
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 36,
+        "opening_seed": 2582772473,
+        "opening_moves": [
+          60,
+          10,
+          30,
+          20
+        ],
+        "game_seed": 1179506078,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 59
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 37,
+        "opening_seed": 3019085050,
+        "opening_moves": [
+          76,
+          67,
+          48,
+          73
+        ],
+        "game_seed": 3260192454,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 59
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 38,
+        "opening_seed": 2744505510,
+        "opening_moves": [
+          19,
+          58,
+          13,
+          40
+        ],
+        "game_seed": 1921561957,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 60
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 52
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 39,
+        "opening_seed": 730540917,
+        "opening_moves": [
+          72,
+          55,
+          13,
+          32
+        ],
+        "game_seed": 3880286023,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 59
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 40,
+        "opening_seed": 2803459958,
+        "opening_moves": [
+          63,
+          36,
+          27,
+          18
+        ],
+        "game_seed": 2113283866,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 47
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 64
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 41,
+        "opening_seed": 2950558232,
+        "opening_moves": [
+          77,
+          80,
+          60,
+          10
+        ],
+        "game_seed": 1400816447,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 67
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 42,
+        "opening_seed": 922195631,
+        "opening_moves": [
+          12,
+          47,
+          78,
+          55
+        ],
+        "game_seed": 66562304,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 45
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 43,
+        "opening_seed": 1980348466,
+        "opening_moves": [
+          44,
+          52,
+          58,
+          22
+        ],
+        "game_seed": 662490164,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 44
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 59
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 44,
+        "opening_seed": 1730820798,
+        "opening_moves": [
+          7,
+          14,
+          42,
+          46
+        ],
+        "game_seed": 3114714478,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 52
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 62
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 45,
+        "opening_seed": 848223662,
+        "opening_moves": [
+          53,
+          60,
+          19,
+          66
+        ],
+        "game_seed": 777229639,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 67
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 46,
+        "opening_seed": 3487530537,
+        "opening_moves": [
+          67,
+          32,
+          7,
+          14
+        ],
+        "game_seed": 3610870407,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 59
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 47,
+        "opening_seed": 231958630,
+        "opening_moves": [
+          6,
+          9,
+          29,
+          17
+        ],
+        "game_seed": 3434915319,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 64
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 48,
+        "opening_seed": 3516036689,
+        "opening_moves": [
+          31,
+          22,
+          75,
+          65
+        ],
+        "game_seed": 2640901194,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 2,
+          "moves": 61
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 49,
+        "opening_seed": 3124960747,
+        "opening_moves": [
+          55,
+          22,
+          68,
+          43
+        ],
+        "game_seed": 1354169622,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 51
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 69
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 50,
+        "opening_seed": 3151991471,
+        "opening_moves": [
+          70,
+          31,
+          23,
+          71
+        ],
+        "game_seed": 637059383,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 45
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 51,
+        "opening_seed": 558862525,
+        "opening_moves": [
+          76,
+          58,
+          13,
+          40
+        ],
+        "game_seed": 3275981803,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 58
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 52,
+        "opening_seed": 703492684,
+        "opening_moves": [
+          50,
+          71,
+          51,
+          64
+        ],
+        "game_seed": 521331617,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 5,
+          "moves": 62
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 53,
+        "opening_seed": 2395820982,
+        "opening_moves": [
+          9,
+          47,
+          70,
+          48
+        ],
+        "game_seed": 2184697031,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 54,
+        "opening_seed": 2746759155,
+        "opening_moves": [
+          8,
+          24,
+          55,
+          3
+        ],
+        "game_seed": 1893024769,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 4,
+          "moves": 61
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 55,
+        "opening_seed": 4202228613,
+        "opening_moves": [
+          47,
+          62,
+          15,
+          38
+        ],
+        "game_seed": 1168131457,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 5,
+          "moves": 68
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 56,
+        "opening_seed": 2761984734,
+        "opening_moves": [
+          73,
+          76,
+          59,
+          15
+        ],
+        "game_seed": 3207019599,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 59
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 52
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 57,
+        "opening_seed": 1424527308,
+        "opening_moves": [
+          55,
+          21,
+          54,
+          9
+        ],
+        "game_seed": 1487505798,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 58,
+        "opening_seed": 3954310002,
+        "opening_moves": [
+          18,
+          64,
+          41,
+          42
+        ],
+        "game_seed": 1302014644,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 61
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 59,
+        "opening_seed": 2986496456,
+        "opening_moves": [
+          24,
+          74,
+          62,
+          7
+        ],
+        "game_seed": 1723932442,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 65
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 48
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 60,
+        "opening_seed": 380435724,
+        "opening_moves": [
+          0,
+          20,
+          71,
+          52
+        ],
+        "game_seed": 678020141,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 61
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 61,
+        "opening_seed": 1405083785,
+        "opening_moves": [
+          66,
+          46,
+          67,
+          39
+        ],
+        "game_seed": 614042321,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 6,
+          "p2_score": 3,
+          "moves": 47
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 60
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 62,
+        "opening_seed": 3521378688,
+        "opening_moves": [
+          25,
+          75,
+          72,
+          64
+        ],
+        "game_seed": 2459820165,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 53
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 62
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 63,
+        "opening_seed": 104020039,
+        "opening_moves": [
+          78,
+          54,
+          0,
+          1
+        ],
+        "game_seed": 3536172653,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 49
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 61
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 64,
+        "opening_seed": 480977891,
+        "opening_moves": [
+          64,
+          39,
+          46,
+          75
+        ],
+        "game_seed": 4255059591,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 53
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 65,
+        "opening_seed": 914510159,
+        "opening_moves": [
+          61,
+          5,
+          16,
+          31
+        ],
+        "game_seed": 652875327,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 54
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 66,
+        "opening_seed": 957328861,
+        "opening_moves": [
+          46,
+          57,
+          11,
+          53
+        ],
+        "game_seed": 1364128522,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 59
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 61
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 67,
+        "opening_seed": 1292168210,
+        "opening_moves": [
+          9,
+          37,
+          50,
+          71
+        ],
+        "game_seed": 3866038797,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 60
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 52
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 68,
+        "opening_seed": 3454635912,
+        "opening_moves": [
+          76,
+          68,
+          51,
+          54
+        ],
+        "game_seed": 1808408020,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 58
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 54
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 69,
+        "opening_seed": 3506236694,
+        "opening_moves": [
+          17,
+          43,
+          32,
+          26
+        ],
+        "game_seed": 1057161771,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 45
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 52
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 70,
+        "opening_seed": 1862660148,
+        "opening_moves": [
+          69,
+          29,
+          26,
+          78
+        ],
+        "game_seed": 4135011565,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 55
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 4,
+          "moves": 67
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 71,
+        "opening_seed": 2023750041,
+        "opening_moves": [
+          74,
+          80,
+          70,
+          48
+        ],
+        "game_seed": 2531982735,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 53
+        },
+        "candidate_as_p2": {
+          "outcome": 0.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 53
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 72,
+        "opening_seed": 3264711805,
+        "opening_moves": [
+          70,
+          39,
+          46,
+          76
+        ],
+        "game_seed": 1897935536,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 52
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 62
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 73,
+        "opening_seed": 62766996,
+        "opening_moves": [
+          9,
+          46,
+          77,
+          80
+        ],
+        "game_seed": 703897820,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 51
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 54
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 74,
+        "opening_seed": 4070274876,
+        "opening_moves": [
+          60,
+          1,
+          13,
+          48
+        ],
+        "game_seed": 2343546578,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 3,
+          "moves": 60
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 57
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 75,
+        "opening_seed": 1309252979,
+        "opening_moves": [
+          41,
+          33,
+          10,
+          49
+        ],
+        "game_seed": 2983944189,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 3,
+          "moves": 72
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 76,
+        "opening_seed": 2724532285,
+        "opening_moves": [
+          26,
+          62,
+          17,
+          33
+        ],
+        "game_seed": 2718759411,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 50
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 62
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 77,
+        "opening_seed": 3572958239,
+        "opening_moves": [
+          51,
+          72,
+          56,
+          25
+        ],
+        "game_seed": 72774525,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 61
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 4,
+          "moves": 60
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 78,
+        "opening_seed": 1990068056,
+        "opening_moves": [
+          78,
+          56,
+          25,
+          77
+        ],
+        "game_seed": 1176609626,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 54
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 54
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 79,
+        "opening_seed": 2401232585,
+        "opening_moves": [
+          39,
+          28,
+          13,
+          40
+        ],
+        "game_seed": 1700763279,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 41
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 64
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 80,
+        "opening_seed": 1357327334,
+        "opening_moves": [
+          33,
+          10,
+          32,
+          7
+        ],
+        "game_seed": 1678530303,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 3,
+          "moves": 60
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 81,
+        "opening_seed": 358709369,
+        "opening_moves": [
+          54,
+          2,
+          6,
+          0
+        ],
+        "game_seed": 2447915089,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 50
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 49
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 82,
+        "opening_seed": 418425339,
+        "opening_moves": [
+          45,
+          74,
+          69,
+          29
+        ],
+        "game_seed": 1361936734,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 53
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 83,
+        "opening_seed": 251151264,
+        "opening_moves": [
+          27,
+          18,
+          72,
+          65
+        ],
+        "game_seed": 2984547903,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 60
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 63
+        },
+        "pair_score": 0.5
+      },
+      {
+        "opening_index": 84,
+        "opening_seed": 3103101928,
+        "opening_moves": [
+          28,
+          3,
+          19,
+          76
+        ],
+        "game_seed": 489357153,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 50
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 69
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 85,
+        "opening_seed": 1642771266,
+        "opening_moves": [
+          59,
+          17,
+          52,
+          77
+        ],
+        "game_seed": 3199811450,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 65
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 54
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 86,
+        "opening_seed": 2864783148,
+        "opening_moves": [
+          12,
+          47,
+          61,
+          21
+        ],
+        "game_seed": 3672452317,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 59
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 87,
+        "opening_seed": 2280723810,
+        "opening_moves": [
+          56,
+          25,
+          59,
+          17
+        ],
+        "game_seed": 1250096935,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 2,
+          "moves": 65
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 49
+        },
+        "pair_score": 1.0
+      },
+      {
+        "opening_index": 88,
+        "opening_seed": 73983379,
+        "opening_moves": [
+          0,
+          11,
+          52,
+          58
+        ],
+        "game_seed": 318587841,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 89,
+        "opening_seed": 3480926894,
+        "opening_moves": [
+          47,
+          70,
+          48,
+          64
+        ],
+        "game_seed": 4156856796,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 63
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 53
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 90,
+        "opening_seed": 3306061343,
+        "opening_moves": [
+          79,
+          59,
+          26,
+          71
+        ],
+        "game_seed": 549694536,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 50
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 49
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 91,
+        "opening_seed": 2830072407,
+        "opening_moves": [
+          0,
+          2,
+          8,
+          25
+        ],
+        "game_seed": 1790010626,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 3,
+          "moves": 69
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 67
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 92,
+        "opening_seed": 3196361642,
+        "opening_moves": [
+          58,
+          4,
+          14,
+          51
+        ],
+        "game_seed": 2193258419,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 4,
+          "moves": 49
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 47
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 93,
+        "opening_seed": 1777858294,
+        "opening_moves": [
+          47,
+          78,
+          74,
+          61
+        ],
+        "game_seed": 1714398327,
+        "candidate_as_p1": {
+          "outcome": 0.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 4,
+          "moves": 56
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "pair_score": 0.25
+      },
+      {
+        "opening_index": 94,
+        "opening_seed": 297804475,
+        "opening_moves": [
+          74,
+          62,
+          16,
+          41
+        ],
+        "game_seed": 3763955132,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 4,
+          "p2_score": 2,
+          "moves": 67
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 48
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 95,
+        "opening_seed": 4073680410,
+        "opening_moves": [
+          43,
+          39,
+          28,
+          4
+        ],
+        "game_seed": 1666734814,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 57
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 56
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 96,
+        "opening_seed": 4291917193,
+        "opening_moves": [
+          63,
+          46,
+          57,
+          18
+        ],
+        "game_seed": 3311769437,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 2,
+          "moves": 57
+        },
+        "candidate_as_p2": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 4,
+          "p2_score": 4,
+          "moves": 55
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 97,
+        "opening_seed": 1244057055,
+        "opening_moves": [
+          10,
+          31,
+          22,
+          58
+        ],
+        "game_seed": 1493615056,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 64
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 3,
+          "p2_score": 5,
+          "moves": 63
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 98,
+        "opening_seed": 2731900827,
+        "opening_moves": [
+          12,
+          45,
+          55,
+          14
+        ],
+        "game_seed": 1723742827,
+        "candidate_as_p1": {
+          "outcome": 0.5,
+          "winner": 0,
+          "p1_score": 3,
+          "p2_score": 3,
+          "moves": 54
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 2,
+          "p2_score": 6,
+          "moves": 64
+        },
+        "pair_score": 0.75
+      },
+      {
+        "opening_index": 99,
+        "opening_seed": 2036289756,
+        "opening_moves": [
+          62,
+          17,
+          43,
+          30
+        ],
+        "game_seed": 646951638,
+        "candidate_as_p1": {
+          "outcome": 1.0,
+          "winner": 1,
+          "p1_score": 5,
+          "p2_score": 3,
+          "moves": 57
+        },
+        "candidate_as_p2": {
+          "outcome": 1.0,
+          "winner": 2,
+          "p1_score": 4,
+          "p2_score": 5,
+          "moves": 55
+        },
+        "pair_score": 1.0
+      }
+    ]
+  },
+  "promotion": {
+    "qualified": true,
+    "promoted": true,
+    "min_score_rate": 0.55,
+    "min_ci95_lower": 0.5,
+    "observed_score_rate": 0.6575,
+    "observed_ci95_lower": 0.605,
+    "reason": "候选模型达到双门槛，已发布为 Tic-Tac-Toe Sophon v1.0"
+  },
+  "release": {
+    "name": "Tic-Tac-Toe Sophon",
+    "version": "v1.0",
+    "current_champion": "checkpoints\\best.pth",
+    "versioned_checkpoint": "checkpoints\\releases\\Tic-Tac-Toe_Sophon_v1.0.pth",
+    "previous_champion": "checkpoints/releases/pre_v1_champion.pth",
+    "human_gate": "pending: requires at least 20 unassisted completed games"
+  }
+}

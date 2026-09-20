@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e8">
+  <title>Ultimate Tic-Tac-Toe — Play and Analyze</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23a16b19'/%3E%3Cpath d='M11 6v20M21 6v20M6 11h20M6 21h20' stroke='%23fff5d8' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Ultimate Tic-Tac-Toe home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span>Ultimate Tic-Tac-Toe<span class="brand-subtitle">LOCAL AI PLAYGROUND</span></span>
+      </a>
+      <span class="local-badge"><span class="status-dot"></span>LOCAL MODEL · ONLINE</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">ULTIMATE TIC-TAC-TOE · HUMAN VS AI</p><h1 id="page-title">Play against Sophon v1.0</h1><p class="intro-copy">Play against the current model or inspect legal moves with Guided Analysis.</p></div>
+        <div class="model-card"><span class="model-icon" aria-hidden="true">✳</span><div><span class="meta-label">CURRENT MODEL</span><strong id="model-name">Connecting to model…</strong><span id="model-detail">Local checkpoint · ready for inference.</span></div></div>
+      </section>
+
+      <div id="error-banner" class="error-banner" role="alert" hidden><span id="error-message"></span><button id="retry-button" class="text-button" type="button">Retry</button><button id="dismiss-error" class="dismiss-button" type="button" aria-label="Dismiss message">×</button></div>
+
+      <div class="workspace">
+        <section class="game-panel" aria-label="Game and settings">
+          <div class="setup-row">
+            <div class="mode-switch" role="group" aria-label="Game mode">
+              <button class="mode-button selected" data-mode="match" type="button" aria-pressed="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg><span>Play vs AI</span></button>
+              <button class="mode-button" data-mode="coach" type="button" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2 2.2 5.8L18 10l-5.8 2.2L10 18l-2.2-5.8L2 10l5.8-2.2Z"/></svg><span>Guided analysis</span><span class="tiny-badge">TOP 3</span></button>
+            </div>
+            <div class="side-switch" role="group" aria-label="Choose your side"><button class="side-button selected" data-side="1" type="button" aria-pressed="true">Go first <span>×</span></button><button class="side-button" data-side="2" type="button" aria-pressed="false">Go second <span>○</span></button></div>
+          </div>
+
+          <div class="board-header"><div><div class="board-kicker"><span id="mode-label">GAME SETUP</span><span id="move-count">MOVE 00</span></div><h2 id="turn-title" aria-live="polite">Select settings and start a game.</h2><p id="turn-hint">Choose the mode and your player side.</p></div><button id="start-button" class="primary-button" type="button"><span id="start-label">Start game</span><span aria-hidden="true">↗</span></button></div>
+          <p id="pending-settings" class="pending-settings" hidden>The selected settings apply to the next game.</p>
+
+          <div class="board-wrap">
+            <div class="column-labels" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div class="row-labels" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+            <div id="board" class="board" aria-label="Ultimate Tic-Tac-Toe board with nine small boards"></div>
+            <div id="cell-preview" class="cell-preview" role="status"><span class="preview-dot"></span><span id="preview-text">A small board is won by forming three in a row.</span></div>
+          </div>
+
+          <div class="board-footer"><div class="legend"><span><i class="legend-dot human"></i>You <b id="human-symbol">×</b></span><span><i class="legend-dot ai"></i>AI <b id="ai-symbol">○</b></span><span class="legal-legend"><i class="legend-square"></i>Legal board</span></div><span id="board-score" class="board-score">Small-board score <b>0 : 0</b></span></div>
+          <details class="rules"><summary>Rules and move routing <span aria-hidden="true">+</span></summary><p>Your move position determines the small board where the opponent must play. If that destination board is closed, the opponent may choose any open board. Three marks in a row close and award the small board.</p><p><strong>Scoring rule:</strong> the game continues until all nine small boards are closed. The player who controls more small boards wins; a line on the 3×3 board does not end the game early.</p></details>
+        </section>
+
+        <aside class="insight-panel" aria-label="Position analysis and move history">
+          <section class="evaluation-card" aria-labelledby="evaluation-title"><div class="section-heading"><h2 id="evaluation-title">Position evaluation</h2><span id="analysis-status" class="live-label">WAITING</span></div><p class="section-description">Estimated expected score</p><div class="rate-labels"><div><span><i class="legend-dot human"></i>You</span><strong id="human-rate">—<small>%</small></strong></div><div><span>AI<i class="legend-dot ai"></i></span><strong id="ai-rate">—<small>%</small></strong></div></div><div id="win-bar" class="win-bar unavailable" role="img" aria-label="Expected score has not been estimated"><div id="human-bar" class="human-bar"></div><div id="ai-bar" class="ai-bar"></div></div><div class="bar-caption"><span>HUMAN</span><span>AI</span></div><p id="evaluation-note" class="evaluation-note">Start a game to calculate the model estimate for this position.</p></section>
+
+          <section class="recommendations-card" aria-labelledby="recommendation-title"><div class="section-heading"><h2 id="recommendation-title">Recommend moves</h2><span class="recommendation-icon" aria-hidden="true">✧</span></div><p id="recommendation-description" class="section-description">Highest-ranked legal moves from the current position.</p><div id="recommendations" class="recommendations"><div class="insight-empty"><div class="mini-board" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong>Guided analysis is off.</strong><p>Select Guided analysis to calculate and display the three highest-ranked legal moves.</p></div></div><div class="recommendation-scale"><span class="scale-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span>Darker indicates a higher model rank</span></div></section>
+
+          <section class="record-card" aria-labelledby="record-title"><div class="section-heading"><h2 id="record-title">Move history</h2><span id="history-count" class="count-badge">0</span></div><div id="history" class="history"><p class="history-empty">No moves recorded.</p></div><div class="record-status"><span id="record-indicator" class="record-indicator"></span><span id="record-status-text">Moves are saved automatically.</span></div><div class="record-actions"><button id="abort-button" class="secondary-button" type="button" disabled>End and save</button><a id="download-button" class="download-button disabled" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v11m-4-4 4 4 4-4M4 14v3h12v-3"/></svg>Download JSON</a></div></section>
+          <p class="metric-note">Draws count as 50% for evaluation. Values are model estimates, not calibrated probabilities. Delta values are percentage points.</p>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-footer"><span>ULTIMATE TIC-TAC-TOE · POSITIONAL DECISION-MAKING</span><span>HUMAN VS AI · LOCAL INFERENCE</span></footer>
+  </div>
+</body>
+</html>
