@@ -4,7 +4,7 @@
 
 Play Ultimate Tic-Tac-Toe against **Sophon v1.1** in your browser. The AI model
 is included in this repository: install the Python dependencies, start the
-local app, and play. The image above is an illustration, not a screenshot.
+local app, and play.
 
 ## Quick start
 
