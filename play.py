@@ -35,7 +35,6 @@ from game import (
 from game_record import GameRecorder
 from mcts import search
 from model import UltimateNet, configure_inference
-from self_play import select_action
 
 
 DEFAULT_CHECKPOINT = Path(__file__).resolve().parent / "checkpoints" / "best.pth"
@@ -210,8 +209,11 @@ def choose_ai_action(
         cache=cache,
         rng=rng,
     )
-    # 温度为 0：总是选访问次数最多的动作；并列时由 seed 可复现地决定。
-    return select_action(visits, moves, temperature=0.0, rng=rng)
+    # 温度为 0：选访问次数最多的动作；并列时由 seed 可复现地决定。
+    legal_array = np.asarray(moves, dtype=np.int64)
+    weights = visits[legal_array]
+    best = legal_array[np.isclose(weights, weights.max(), rtol=1e-7, atol=1e-12)]
+    return int(rng.choice(best))
 
 
 def prompt_human_move(

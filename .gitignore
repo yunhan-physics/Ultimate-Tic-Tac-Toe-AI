@@ -24,19 +24,36 @@ Desktop.ini
 /logs/
 /records/
 
+# Local development, training, evaluation, and private publishing helpers
+/clean_records.py
+/curriculum.py
+/evaluate.py
+/export_model.py
+/launch_public.py
+/league.py
+/localtunnel_socks.py
+/release_v11.py
+/self_play.py
+/socks_proxy.py
+/symmetry_audit.py
+/train.py
+/validate_environment.py
+/tests/test_clean_records.py
+/tests/test_curriculum.py
+/tests/test_evaluate.py
+/tests/test_launch_public.py
+/tests/test_league.py
+/tests/test_release_v11.py
+/tests/test_self_play.py
+/tests/test_symmetry.py
+/tests/test_train.py
+
 # Downloaded third-party executables and tunnel state
 /tools/*
-!/tools/README.md
 
 # Generated training artifacts. Keep only the lightweight public release.
 /checkpoints/**
 !/checkpoints/best.pth
-!/checkpoints/releases/
-!/checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth
-!/checkpoints/releases/Tic-Tac-Toe_Sophon_v1.1.pth
-!/checkpoints/releases/pre_v1_champion.pth
-!/checkpoints/releases/v1.0_release_report.json
-!/checkpoints/releases/v1.1_release_report.json
 /checkpoints_smoke/
 
 # Temporary model exports

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-labelledby="title desc">
+  <title id="title">The chosen cell sends the next player to a matching board</title>
+  <desc id="desc">An X in the top-right cell of a small board points to the top-right small board in the larger grid.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b57b20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="720" height="250" rx="18" fill="#f6f2e8"/>
+  <rect x="32" y="25" width="244" height="200" rx="14" fill="#fffcf6" stroke="#e5ded0"/>
+  <rect x="444" y="25" width="244" height="200" rx="14" fill="#fffcf6" stroke="#e5ded0"/>
+  <text x="154" y="51" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#383126">Your move in a small board</text>
+  <text x="566" y="51" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#383126">Opponent's next board</text>
+  <g stroke="#817969" stroke-width="2" fill="none">
+    <rect x="79" y="65" width="150" height="150" rx="3"/>
+    <path d="M129 65 V215 M179 65 V215 M79 115 H229 M79 165 H229"/>
+    <rect x="491" y="65" width="150" height="150" rx="3"/>
+    <path d="M541 65 V215 M591 65 V215 M491 115 H641 M491 165 H641"/>
+  </g>
+  <rect x="593" y="67" width="46" height="46" rx="4" fill="#f6e9bd" stroke="#b57b20" stroke-width="2"/>
+  <path d="M192 78 L216 102 M216 78 L192 102" fill="none" stroke="#b57b20" stroke-width="7" stroke-linecap="round"/>
+  <path d="M295 139 H413" fill="none" stroke="#b57b20" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

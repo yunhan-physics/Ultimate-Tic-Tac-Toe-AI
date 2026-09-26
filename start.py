@@ -100,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     error_log = ROOT / "logs" / "web_server.stderr.log"
     if status == "foreign":
         print(f"Port {args.port} is already used by another application.", file=sys.stderr)
-        print("Close that application or run: python launch_web.py --port 8766", file=sys.stderr)
+        print("Close that application or run: python start.py --port 8766", file=sys.stderr)
         return 2
     if status == "offline":
         process, error_log = start_server(args.port, args.lan)
