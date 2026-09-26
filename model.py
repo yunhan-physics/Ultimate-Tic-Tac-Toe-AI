@@ -7,6 +7,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from symmetry import inverse_policy, transform_spatial
+
 
 ACTION_SIZE = 81
 
@@ -58,6 +60,7 @@ class UltimateNet(nn.Module):
             "blocks": blocks,
             "value_hidden": value_hidden,
         }
+        self.d4_ensemble = False
         self.stem = nn.Sequential(
             nn.Conv2d(input_channels, channels, 3, padding=1, bias=False),
             nn.GroupNorm(groups, channels),
@@ -89,7 +92,7 @@ class UltimateNet(nn.Module):
         nn.init.normal_(self.policy_linear.weight, std=0.01)
         nn.init.normal_(self.value_linear2.weight, std=0.01)
 
-    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    def _forward_raw(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         if x.ndim != 4 or x.shape[1:] != (self.config["input_channels"], 9, 9):
             raise ValueError(
                 f"输入形状必须是 (B, {self.config['input_channels']}, 9, 9)，实际为 {tuple(x.shape)}"
@@ -103,6 +106,30 @@ class UltimateNet(nn.Module):
         value = F.relu(self.value_linear1(value.flatten(1)), inplace=False)
         value = torch.tanh(self.value_linear2(value))
         return policy_logits, value
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        if not self.d4_ensemble or self.training:
+            return self._forward_raw(x)
+        if x.ndim != 4 or x.shape[1:] != (self.config["input_channels"], 9, 9):
+            return self._forward_raw(x)
+        batch = x.shape[0]
+        transformed = torch.cat([transform_spatial(x, index) for index in range(8)])
+        logits, values = self._forward_raw(transformed)
+        logits = torch.stack([
+            inverse_policy(logits[index * batch:(index + 1) * batch], index)
+            for index in range(8)
+        ]).mean(dim=0)
+        values = values.reshape(8, batch, 1).mean(dim=0)
+        return logits, values
+
+
+def configure_inference(model: UltimateNet, payload: dict) -> UltimateNet:
+    """Enable release-time symmetry averaging when recorded in a checkpoint."""
+    mode = payload.get("inference_symmetry")
+    if mode not in (None, "none", "d4"):
+        raise ValueError(f"Unsupported inference symmetry: {mode!r}")
+    model.d4_ensemble = mode == "d4"
+    return model
 
 
 def masked_policy(policy_logits: torch.Tensor, legal_mask: torch.Tensor) -> torch.Tensor:

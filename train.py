@@ -17,6 +17,7 @@ import torch.nn.functional as F
 
 from model import UltimateNet, count_parameters
 from self_play import ReplayBuffer, SelfPlayResult, play_one_game
+from symmetry import inverse_policy, transform_spatial
 
 
 def policy_value_loss(
@@ -40,15 +41,21 @@ def train_updates(
     device: torch.device,
     rng: np.random.Generator,
     grad_clip: float = 5.0,
+    symmetry_fraction: float = 0.0,
+    symmetry_policy_weight: float = 0.0,
+    symmetry_value_weight: float = 0.0,
 ) -> dict[str, float]:
     """从回放缓冲随机抽样并更新网络若干步。"""
     if steps <= 0:
         raise ValueError("steps 必须为正整数")
     if len(replay) == 0:
         raise ValueError("回放缓冲为空")
+    if not 0 <= symmetry_fraction <= 1 or min(symmetry_policy_weight, symmetry_value_weight) < 0:
+        raise ValueError("symmetry settings must be nonnegative and fraction must be <= 1")
     actual_batch = min(batch_size, len(replay))
     net.train()
-    totals = {"loss": 0.0, "policy_loss": 0.0, "value_loss": 0.0, "grad_norm": 0.0}
+    totals = {"loss": 0.0, "policy_loss": 0.0, "value_loss": 0.0,
+              "symmetry_policy_loss": 0.0, "symmetry_value_loss": 0.0, "grad_norm": 0.0}
 
     for _ in range(steps):
         states, policies, values = replay.sample(actual_batch, rng, augment=True)
@@ -61,6 +68,32 @@ def train_updates(
         loss, policy_loss, value_loss = policy_value_loss(
             logits, value_prediction, policies_tensor, values_tensor
         )
+        symmetry_policy_loss = logits.new_zeros(())
+        symmetry_value_loss = logits.new_zeros(())
+        orbit_size = min(actual_batch, round(actual_batch * symmetry_fraction))
+        if orbit_size and (symmetry_policy_weight or symmetry_value_weight):
+            orbit_states = torch.cat([
+                transform_spatial(states_tensor[:orbit_size], index) for index in range(8)
+            ])
+            orbit_logits, orbit_values = net(orbit_states)
+            aligned = torch.stack([
+                inverse_policy(orbit_logits[index * orbit_size:(index + 1) * orbit_size], index)
+                for index in range(8)
+            ])
+            legal = states_tensor[:orbit_size, 5].bool().reshape(1, orbit_size, 81)
+            log_probabilities = F.log_softmax(
+                aligned.masked_fill(~legal, torch.finfo(aligned.dtype).min), dim=-1
+            )
+            probabilities = log_probabilities.exp()
+            mean_policy = probabilities.mean(dim=0).detach()
+            symmetry_policy_loss = (
+                mean_policy.unsqueeze(0)
+                * (mean_policy.clamp_min(1e-8).log().unsqueeze(0) - log_probabilities)
+            ).sum(dim=-1).mean()
+            orbit_values = orbit_values.reshape(8, orbit_size, 1)
+            symmetry_value_loss = (orbit_values - orbit_values.mean(dim=0).detach()).square().mean()
+            loss = (loss + symmetry_policy_weight * symmetry_policy_loss
+                    + symmetry_value_weight * symmetry_value_loss)
         if not torch.isfinite(loss):
             raise FloatingPointError("训练损失出现 NaN 或无穷大")
         loss.backward()
@@ -72,6 +105,8 @@ def train_updates(
         totals["loss"] += float(loss.detach())
         totals["policy_loss"] += float(policy_loss.detach())
         totals["value_loss"] += float(value_loss.detach())
+        totals["symmetry_policy_loss"] += float(symmetry_policy_loss.detach())
+        totals["symmetry_value_loss"] += float(symmetry_value_loss.detach())
         totals["grad_norm"] += float(grad_norm.detach())
 
     return {name: value / steps for name, value in totals.items()}
@@ -131,6 +166,7 @@ def save_checkpoint(
             "version": getattr(args, "model_version", None),
         },
         "model_config": dict(net.config),
+        "inference_symmetry": getattr(args, "inference_symmetry", None),
         "state_dict": cpu_state_dict(net),
         "optimizer_state": optimizer.state_dict(),
         "replay": replay.state_dict(),
@@ -204,6 +240,12 @@ def run_training(args: argparse.Namespace) -> list[dict]:
         # 仍允许由本次命令覆盖。这样继续保存的检查点也不会写入错误配置。
         for key in ("channels", "blocks", "value_hidden", "learning_rate", "weight_decay"):
             setattr(args, key, saved_args[key])
+        if args.resume_learning_rate is not None:
+            if args.resume_learning_rate <= 0:
+                raise ValueError("resume learning rate must be positive")
+            args.learning_rate = args.resume_learning_rate
+            for group in optimizer.param_groups:
+                group["lr"] = args.learning_rate
     else:
         net = UltimateNet(
             channels=args.channels,
@@ -220,6 +262,7 @@ def run_training(args: argparse.Namespace) -> list[dict]:
 
     self_play_net = UltimateNet(**net.config).cpu()
     self_play_net.load_state_dict(cpu_state_dict(net))
+    self_play_net.d4_ensemble = args.inference_symmetry == "d4"
     print(
         f"模型：{args.model_name} {args.model_version or '(candidate)'}；"
         f"网络参数：{count_parameters(net):,}；自对弈=CPU/{args.workers}线程；"
@@ -250,6 +293,9 @@ def run_training(args: argparse.Namespace) -> list[dict]:
             device=train_device,
             rng=rng,
             grad_clip=args.grad_clip,
+            symmetry_fraction=args.symmetry_fraction,
+            symmetry_policy_weight=args.symmetry_policy_weight,
+            symmetry_value_weight=args.symmetry_value_weight,
         )
         self_play_net.load_state_dict(cpu_state_dict(net))
 
@@ -319,6 +365,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--blocks", type=int, default=3)
     parser.add_argument("--value-hidden", type=int, default=64)
     parser.add_argument("--learning-rate", type=float, default=2e-3)
+    parser.add_argument("--resume-learning-rate", type=float, default=None)
+    parser.add_argument("--inference-symmetry", choices=("none", "d4"), default="none")
+    parser.add_argument("--symmetry-fraction", type=float, default=0.0)
+    parser.add_argument("--symmetry-policy-weight", type=float, default=0.0)
+    parser.add_argument("--symmetry-value-weight", type=float, default=0.0)
     parser.add_argument("--weight-decay", type=float, default=1e-4)
     parser.add_argument("--grad-clip", type=float, default=5.0)
     parser.add_argument("--c-puct", type=float, default=1.5)

@@ -18,6 +18,7 @@ def export_model(source: Path, destination: Path, evaluation: Path | None = None
         "model_config": payload["model_config"],
         "state_dict": payload["state_dict"],
         "iteration": payload.get("iteration", -1),
+        "inference_symmetry": payload.get("inference_symmetry"),
         "source_checkpoint": str(source),
     }
     if evaluation is not None:

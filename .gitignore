@@ -33,8 +33,10 @@ Desktop.ini
 !/checkpoints/best.pth
 !/checkpoints/releases/
 !/checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth
+!/checkpoints/releases/Tic-Tac-Toe_Sophon_v1.1.pth
 !/checkpoints/releases/pre_v1_champion.pth
 !/checkpoints/releases/v1.0_release_report.json
+!/checkpoints/releases/v1.1_release_report.json
 /checkpoints_smoke/
 
 # Temporary model exports

@@ -349,6 +349,7 @@ def export_champion(
         raise ValueError("候选检查点缺少 model_config 或 state_dict")
     slim = {
         "format_version": int(payload.get("format_version", 1)),
+        "inference_symmetry": payload.get("inference_symmetry"),
         "model_identity": dict(payload.get("model_identity", {})),
         "model_config": dict(payload["model_config"]),
         "state_dict": {
@@ -409,6 +410,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--report", type=Path, default=Path("checkpoints/league_report.json"))
     parser.add_argument("--no-promote", action="store_true", help="只比赛和报告，不替换冠军")
+    parser.add_argument("--candidate-no-symmetry", action="store_true",
+                        help="消融实验：只使用候选网络本身，不使用其 D4 推理集成")
     return parser.parse_args(argv)
 
 
@@ -424,6 +427,8 @@ def main(argv: list[str] | None = None) -> int:
     torch.set_num_threads(args.torch_threads)
     candidate, candidate_payload = load_model(args.candidate)
     champion, champion_payload = load_model(args.champion)
+    if args.candidate_no_symmetry:
+        candidate.d4_ensemble = False
     match = run_league(
         candidate,
         champion,
@@ -440,6 +445,7 @@ def main(argv: list[str] | None = None) -> int:
             "path": str(args.candidate),
             "iteration": int(candidate_payload.get("iteration", -1)),
             "parameters": count_parameters(candidate),
+            "inference_symmetry": "none" if args.candidate_no_symmetry else candidate_payload.get("inference_symmetry", "none"),
         },
         "champion": {
             "path": str(args.champion),

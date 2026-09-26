@@ -17,7 +17,7 @@ python web_server.py
 ```
 
 Open `http://127.0.0.1:8765` in a browser. The repository includes the compact
-Sophon v1.0 inference model, so no training checkpoint download is needed to
+Sophon v1.1 inference model, so no training checkpoint download is needed to
 start playing.
 
 ## Game rules
@@ -50,14 +50,37 @@ start playing.
 7. **Evaluation and tuning — complete:** alternating-side matches against
    random and heuristic baselines, heuristic curriculum training, and pure
    self-play fine-tuning.
-8. **Human play and continued improvement — v1.0 released:** command-line and
+8. **Human play and continued improvement — v1.1 released:** command-line and
    browser play, game-record auditing, deeper self-play, paired-opening model
-   leagues, and guarded champion promotion.
+   leagues, D4 symmetry training and inference, and guarded champion promotion.
 
-## Current model: Tic-Tac-Toe Sophon v1.0
+## Current model: Tic-Tac-Toe Sophon v1.1
 
 The compact champion model is stored at `checkpoints/best.pth`; the named
-release is at `checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth`.
+release is at `checkpoints/releases/Tic-Tac-Toe_Sophon_v1.1.pth`. The v1.0
+release remains available separately.
+
+Starting from the full v1.0 training checkpoint, v1.1 added 200 self-play games
+at 96 MCTS simulations per move, 10,575 training positions, and 1,000 optimizer
+updates. Training combined existing D4 data augmentation with policy and value
+consistency losses over all eight rotations/reflections. At inference time the
+eight transformed positions are evaluated in one batch, their policies are
+mapped back to the original board, and their outputs are averaged. This makes
+the released predictions D4-consistent to numerical precision. It uses eight
+network evaluations per position, so play may be slower than v1.0 at the same
+search budget; batching means wall-clock cost is not necessarily eightfold.
+
+In the formal paired-opening league against v1.0, each model used 96 MCTS
+simulations per move. Across 200 openings with sides swapped (400 games), v1.1
+scored 227 wins, 37 losses, and 136 draws: a 73.75% score rate. The paired
+bootstrap 95% interval was 70.63%–76.88%. The candidate passed the 55% score
+threshold and 50% lower-bound threshold. The raw network's mean policy
+symmetry discrepancy improved from 0.22356 to 0.19899; its mean value
+discrepancy improved from 0.19381 to 0.16019 on the fixed audit positions.
+See `checkpoints/releases/v1.1_release_report.json` for the full result and
+audit protocol. This is a model-vs-model result, not a human win rate.
+
+### Earlier v1.0 release
 
 Sophon v1.0 added 400 pure self-play games at 96 MCTS simulations per move,
 producing 21,946 new training positions. Across the full project, training used
@@ -78,11 +101,11 @@ openings, with the players swapping sides for every opening (200 games total).
 Sophon v1.0 scored 98 wins, 35 losses, and 67 draws for a 65.75% score rate.
 The paired bootstrap 95% interval was 60.5%–70.75%, passing both the 55% score
 threshold and the 50% confidence-interval lower-bound threshold. See
-`checkpoints/releases/v1.0_release_report.json` for the complete report.
+`checkpoints/releases/v1.0_release_report.json` for that release's report.
 
 Human evaluation is kept separate from model-league evaluation. Human game
 records are local runtime data and are not published in this repository. Run
-`python clean_records.py` to generate a current audit. The v1.0 human benchmark
+`python clean_records.py` to generate a current audit. The human benchmark
 requires at least 20 complete, unassisted games and an AI non-loss rate of at
 least 50%. Assisted games do not count, and a result is not declared conclusive
 while the sample remains below the minimum.
@@ -140,7 +163,7 @@ python web_server.py --port 8765 --simulations 128 --analysis-simulations 24
 
 `--simulations` controls AI moves and current-position evaluation.
 `--analysis-simulations` is the budget for **each** legal candidate in guided
-play. The v1.0 defaults are 128 and 24 respectively. Restart the server after
+play. The defaults are 128 and 24 respectively. Restart the server after
 replacing the champion model.
 
 ### Command-line interface
@@ -239,29 +262,39 @@ python evaluate.py checkpoints/best.pth --games 40 --simulations 96
 
 Full checkpoints contain the optimizer and replay buffer and can resume
 training. The compact `best.pth` file is intended only for inference and as the
-current league champion. The `finetune` and `candidate_v1` paths below are local
-training outputs excluded from the public repository; a fresh clone can first
-run `python train.py` to generate a full checkpoint.
+current league champion. Full training checkpoints are excluded from the public
+repository; a fresh clone can first run `python train.py` to generate one. The
+following reproduces the v1.1 continuation only if the local full v1.0
+checkpoint is available:
 
 ```bash
-# 1. Train a candidate from a resumable checkpoint with deeper self-play search.
-python train.py --resume checkpoints/finetune/trained.pth \
-  --iterations 45 --games-per-iter 20 --simulations 96 --train-steps 100 \
-  --checkpoint-dir checkpoints/candidate_v1 --model-version v1.0
+python train.py --resume checkpoints/candidate_v1/trained.pth \
+  --iterations 55 --games-per-iter 20 --simulations 96 --train-steps 100 \
+  --resume-learning-rate 0.0002 --symmetry-fraction 0.25 \
+  --symmetry-policy-weight 0.2 --symmetry-value-weight 0.2 \
+  --inference-symmetry d4 --model-version v1.1 \
+  --checkpoint-dir checkpoints/candidate_v11
 
-# 2. Evaluate without replacing the champion: 100 openings, 200 games.
-python league.py checkpoints/candidate_v1/trained.pth checkpoints/best.pth \
-  --pairs 100 --opening-plies 4 --simulations 96 --no-promote
-
-# 3. Remove --no-promote to allow guarded champion promotion.
-python league.py checkpoints/candidate_v1/trained.pth checkpoints/best.pth \
-  --pairs 100 --opening-plies 4 --simulations 96
+python symmetry_audit.py checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth \
+  --raw --report checkpoints/candidate_v11/v1_baseline_symmetry.json
+python symmetry_audit.py checkpoints/candidate_v11/trained.pth \
+  --raw --report checkpoints/candidate_v11/v11_raw_symmetry.json
+python symmetry_audit.py checkpoints/candidate_v11/trained.pth \
+  --report checkpoints/candidate_v11/v11_ensemble_symmetry.json
+python league.py checkpoints/candidate_v11/trained.pth \
+  checkpoints/releases/Tic-Tac-Toe_Sophon_v1.0.pth \
+  --pairs 200 --opening-plies 4 --simulations 96 \
+  --report checkpoints/candidate_v11/league_vs_v1.json --no-promote
+python release_v11.py --dry-run
 ```
 
 For every random legal opening, the league swaps model sides and uses identical
 search budgets without exploration noise. Promotion requires a candidate score
 rate of at least 55% and a paired-bootstrap 95% interval lower bound of at least
-50%. Use 200–400 opening pairs when confirming a major champion update.
+50%. For the v1.1 release, `release_v11.py` additionally requires 200 opening
+pairs, the symmetry audit improvements, and D4 inference consistency. Its
+default inputs are local generated reports and checkpoints; do not promote a
+freshly trained model using the published v1.1 report from a different run.
 
 The rules engine depends only on NumPy; neural inference and training use
 PyTorch. Earlier environment validation completed 5,000 random stress games
@@ -289,12 +322,12 @@ machine without being included by `git add .`.
 ## GitHub publication
 
 Before publishing, review ignored files with `git status --short --ignored`.
-Then commit and push:
+Commit the source, compact release model, and public report; keep full training
+checkpoints and private game records local.
 
 ```bash
 git add .
-git commit -m "Initial public release"
-git remote add origin https://github.com/<username>/<repository>.git
+git commit -m "Release Sophon v1.1"
 git push -u origin main
 ```
 

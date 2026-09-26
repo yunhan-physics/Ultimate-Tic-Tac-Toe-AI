@@ -34,7 +34,7 @@ from game import (
 )
 from game_record import GameRecorder
 from mcts import search
-from model import UltimateNet
+from model import UltimateNet, configure_inference
 from self_play import select_action
 
 
@@ -178,6 +178,7 @@ def load_ai_model(
         raise ValueError("检查点缺少 model_config 或 state_dict")
     model = UltimateNet(**payload["model_config"])
     model.load_state_dict(payload["state_dict"])
+    configure_inference(model, payload)
     model.to(device)
     model.eval()
     return model, payload

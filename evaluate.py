@@ -15,7 +15,7 @@ import torch
 from baseline import GameResult, Policy, heuristic_action, play_game, random_action
 from game import EMPTY, P1, legal_moves
 from mcts import search
-from model import UltimateNet, count_parameters
+from model import UltimateNet, configure_inference, count_parameters
 from self_play import select_action
 
 
@@ -23,6 +23,7 @@ def load_model(path: str | Path) -> tuple[UltimateNet, dict]:
     payload = torch.load(path, map_location="cpu", weights_only=False)
     model = UltimateNet(**payload["model_config"])
     model.load_state_dict(payload["state_dict"])
+    configure_inference(model, payload)
     model.eval()
     return model, payload
 
